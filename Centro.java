@@ -14,13 +14,27 @@ public class Centro
     public void contratoFiesta(){
         eventos.add(new Fiesta("Test",horaTest,horaTest+7));
     }
-    
-    private void generarAmbientes(int nAmbientes){
-      for(int i = 0;i < nAmbientes;i++){
-         ambientes.add(new Ambiente("salon "+i));
-      }
+
+    public int asignarAmbiente(){
+        int contador = 0;
+        boolean bandera = true;
+        while(bandera){
+            if(!ambientes.get(contador).getStatus()){
+                bandera = !bandera;
+            } else {
+                contador++;
+            }
+
+        }
+        return contador;
     }
-    
+
+    private void generarAmbientes(int nAmbientes){
+        for(int i = 0;i < nAmbientes;i++){
+            ambientes.add(new Ambiente("salon "+i));
+        }
+    }
+
     public void ambienteLibre(){
         for(int i = 0 ; i<ambientes.size();i++){
             if(!ambientes.get(i).getStatus()){
@@ -28,7 +42,7 @@ public class Centro
             }
         }
     }
-    
+
     public int getHora(){
         return horaTest;
     }
